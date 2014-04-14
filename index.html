@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Drop & File</title>
+	<link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap-responsive.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/default.css">
+
+	<style>
+
+	</style>	
+</head>
+<script src="utils.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+
+<!--<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>-->
+<script src="app.js"></script>
+<!--
+<body ng-app="ngDragDrop">
+	<header>
+	</header>
+	<div class="dropBox" dropable></div>
+	<div id="item_1" dragable> item 1</div>
+</body>
+-->
+<body ng-app="ngDragDrop">
+  <header></header>
+  <div class="outer" ng-controller="albumCtrl">
+    <!-- phtot list  -->
+    <div class="container-fluid" ng-hide="photo_view">
+      <div class="row-fluid" >
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list" >
+              <li ng-class="{true:'active',false:''}[album.on]" ng-repeat="album in albums">
+                <a href="#" ng-click="selectAlbum(album.id)">{{album.name}}</a>
+              </li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+			     <div class="well dropBox" dropable id="{{album.id}}" ng-show="album.on" ng-repeat="album in albums">
+              <h2>{{album.name}}</h2>
+              <div ng-repeat="pic in album.pics"><a href="#" ng-click="showImg()"><img id="photo_id_{{pic.id}}"></img></a></div>
+           </div>
+        </div><!--/span-->
+      </div><!--/row-->    
+    </div><!--/.fluid-container-->
+    <!-- phtot list end.-->
+    <!-- phtot detail  -->
+    <div class="photo_view" ng-show="photo_view">
+        <a href="#" ng-click="showAlbums()"><i class=" icon-remove"></i></a>
+        <div class="photo_box">
+          <img id="photo_view"></img>
+        </div>
+        
+    </div>
+    <!-- phtot detail end.  -->
+     <footer>
+        <p>acer © Company 2013</p>
+      </footer>
+  </div><!--/.outer-->
+</body>
+</html>
